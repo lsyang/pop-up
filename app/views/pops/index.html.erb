@@ -1,0 +1,31 @@
+<h1>Listing pop ups</h1>
+
+<table class="table">
+  <tr>
+  	<th>Map</th>
+  	<th>User_name</th>
+    <th>Lat_long</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pops.each do |pop| %>
+  <tr>
+  	<td><%= pop.map_id %></td>
+  	<% @user=User.find(pop.user_id) %>
+  	<td><%= @user.name %></td>
+  	
+    <td><%= pop.name %></td>
+    <td><%= pop.comment %></td>
+    <td><%= link_to 'Show', pop %></td>
+    <td><%= link_to 'Edit', edit_pop_path(pop) %></td>
+    <td><%= link_to 'Destroy', pop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pop', new_pop_path %>
